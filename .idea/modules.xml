@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo-mobile/demo-mobile.iml" filepath="$PROJECT_DIR$/demo-mobile/demo-mobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-wear/demo-wear.iml" filepath="$PROJECT_DIR$/demo-wear/demo-wear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ibm-wearables-android-sdk.iml" filepath="$PROJECT_DIR$/ibm-wearables-android-sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobileedge-mobile/mobileedge-mobile.iml" filepath="$PROJECT_DIR$/mobileedge-mobile/mobileedge-mobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobileedge-wear/mobileedge-wear.iml" filepath="$PROJECT_DIR$/mobileedge-wear/mobileedge-wear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/record-mobile/record-mobile.iml" filepath="$PROJECT_DIR$/record-mobile/record-mobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/record-wear/record-wear.iml" filepath="$PROJECT_DIR$/record-wear/record-wear.iml" />
+    </modules>
+  </component>
+</project>
