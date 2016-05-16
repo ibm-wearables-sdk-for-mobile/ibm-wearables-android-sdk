@@ -34,7 +34,7 @@ import com.ibm.mobilefirst.mobileedge.interfaces.ConnectionStatusListener;
 
 public class MainActivity extends Activity implements ConnectionStatusListener {
 
-    MobileEdgeController controller;
+    MobileEdgeController controller = new MobileEdgeController();
     Button connectButton;
     TextView accelerometerData;
     Switch accelerometerSwitch;
@@ -44,6 +44,7 @@ public class MainActivity extends Activity implements ConnectionStatusListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         connectButton = (Button) findViewById(R.id.connectButton);
         accelerometerData = (TextView) findViewById(R.id.accelerometerText);
         accelerometerData.setVisibility(View.INVISIBLE);
@@ -51,6 +52,8 @@ public class MainActivity extends Activity implements ConnectionStatusListener {
         findViewById(R.id.connectButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //make connection to android wear device
                 controller.connect(MainActivity.this, new AndroidWear());
             }
         });
@@ -70,10 +73,10 @@ public class MainActivity extends Activity implements ConnectionStatusListener {
             }
         });
 
-        controller = new MobileEdgeController();
+        //set connection listener to get notifications about connection status
         controller.setConnectionListener(this);
 
-        //will be called each time accelerometer data is changed
+        //register accelerometer listener, will be called each time accelerometer data is changed
         controller.sensors.accelerometer.registerListener(new SensorDataListener<AccelerometerData>() {
             @Override
             public void onSensorDataChanged(AccelerometerData data) {
@@ -84,7 +87,6 @@ public class MainActivity extends Activity implements ConnectionStatusListener {
 
     @Override
     public void onConnectionStatusChanged(String deviceName, ConnectionStatus status) {
-
         if (status == ConnectionStatus.Connected){
             Toast.makeText(getApplicationContext(), R.string.connected, Toast.LENGTH_SHORT).show();
             connectButton.setEnabled(false);
