@@ -16,4 +16,11 @@
 
 <resources>
     <string name="app_name">Demo App</string>
+    <string name="connected">Connected to Android Wear</string>
+    <string name="disconnected">Disconnected from Android Wear</string>
+    <string name="connect_to_android_watch">Connect to Android Watch</string>
+    <string name="ibm_mobile_edge_sdk_example">IBM Mobile Edge SDK Example</string>
+    <string name="accelerometer_data">Accelerometer Data</string>
+    <string name="accelerometer_value_display"></string>
+    <string name="enable_accelerometer_sensor">Enable Accelerometer Sensor</string>
 </resources>

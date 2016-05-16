@@ -16,64 +16,102 @@
 
 package com.ibm.mobilefirst.mobileedge.demoapp;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ibm.mobilefirst.mobileedge.MobileEdgeController;
 import com.ibm.mobilefirst.mobileedge.abstractmodel.AccelerometerData;
-import com.ibm.mobilefirst.mobileedge.abstractmodel.GyroscopeData;
 import com.ibm.mobilefirst.mobileedge.connectors.AndroidWear;
 import com.ibm.mobilefirst.mobileedge.connectors.ConnectionStatus;
 import com.ibm.mobilefirst.mobileedge.events.messaging.SensorDataListener;
 import com.ibm.mobilefirst.mobileedge.interfaces.ConnectionStatusListener;
 
-
-public class MainActivity extends AppCompatActivity implements ConnectionStatusListener {
+public class MainActivity extends Activity implements ConnectionStatusListener {
 
     MobileEdgeController controller;
+    Button connectButton;
+    TextView accelerometerData;
+    Switch accelerometerSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        controller = new MobileEdgeController();
+        connectButton = (Button) findViewById(R.id.connectButton);
+        accelerometerData = (TextView) findViewById(R.id.accelerometerText);
+        accelerometerData.setVisibility(View.INVISIBLE);
 
-        controller.setConnectionListener(this);
-        controller.connect(this, new AndroidWear());
-
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.connectButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                controller.turnClassificationSensorsOn();
+                controller.connect(MainActivity.this, new AndroidWear());
+            }
+        });
+
+        accelerometerSwitch = (Switch)findViewById(R.id.accelerometerSwitch);
+        accelerometerSwitch.setEnabled(false);
+        accelerometerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    controller.sensors.accelerometer.on();
+                    accelerometerData.setVisibility(View.VISIBLE);
+                }else{
+                    accelerometerData.setVisibility(View.INVISIBLE);
+                    controller.sensors.accelerometer.off();
+                }
+            }
+        });
+
+        controller = new MobileEdgeController();
+        controller.setConnectionListener(this);
+
+        //will be called each time accelerometer data is changed
+        controller.sensors.accelerometer.registerListener(new SensorDataListener<AccelerometerData>() {
+            @Override
+            public void onSensorDataChanged(AccelerometerData data) {
+                onAccelerometerDataChanged(data);
             }
         });
     }
 
     @Override
     public void onConnectionStatusChanged(String deviceName, ConnectionStatus status) {
-        System.out.println("Connect = " + status);
 
-        controller.sensors.accelerometer.registerListener(new SensorDataListener<AccelerometerData>() {
-            @Override
-            public void onSensorDataChanged(AccelerometerData data) {
-                System.out.println("Accelerometer = " + data.asJSON());
-            }
-        });
+        if (status == ConnectionStatus.Connected){
+            Toast.makeText(getApplicationContext(), R.string.connected, Toast.LENGTH_SHORT).show();
+            connectButton.setEnabled(false);
+            accelerometerSwitch.setEnabled(true);
+        }
 
-        controller.sensors.gyroscope.registerListener(new SensorDataListener<GyroscopeData>() {
-            @Override
-            public void onSensorDataChanged(GyroscopeData data) {
-                System.out.println("Gyroscope = " + data.asJSON());
-            }
-        });
+        else if (status == ConnectionStatus.Disconnected){
+            Toast.makeText(getApplicationContext(), R.string.disconnected, Toast.LENGTH_SHORT).show();
+            connectButton.setEnabled(true);
+            accelerometerSwitch.setEnabled(false);
+            accelerometerSwitch.setChecked(false);
+        }
+    }
+
+    /**
+     * Update the UI with the new data
+     * @param data accelerometer data
+     */
+    private void onAccelerometerDataChanged(AccelerometerData data){
+        String dataString = String.format("x=%.5f y=%.5f z=%.5f",data.x,data.y,data.z);
+        accelerometerData.setText(dataString);
     }
 
 
     @Override
     protected void onPause() {
         super.onPause();
-        controller.turnClassificationSensorsOff();
+        controller.sensors.accelerometer.off();
     }
 }
