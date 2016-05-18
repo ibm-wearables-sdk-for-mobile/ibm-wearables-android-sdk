@@ -20,7 +20,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.util.Log;
 
 import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.PutDataMapRequest;
@@ -124,7 +123,6 @@ public class DataManager implements SensorEventListener {
             gestureDataHolder.addSensorData(event);
 
             if (gestureDataHolder.isHasDataToSend()){
-                Log.e("Data","Send next data");
                 sendNextGestureData();
             }
         }
