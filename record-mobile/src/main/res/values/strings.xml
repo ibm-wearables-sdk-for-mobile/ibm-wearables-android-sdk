@@ -44,4 +44,9 @@
     <string name="iteration_failed_status">Iteration Failed!</string>
     <string name="iteration_failed_error">"Iteration Failed: "</string>
     <string name="iteration_accepted_status">Iteration Accepted!</string>
+    <string name="no_recorded_gestures">No available recorded gestures for testing.</string>
+    <string name="disable">Disable</string>
+    <string name="enable">Enable</string>
+    <string name="delete">Delete</string>
+    <string name="select_action">Select Action</string>
 </resources>

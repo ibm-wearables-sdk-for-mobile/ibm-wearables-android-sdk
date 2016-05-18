@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStatusL
         }
 
         else{
-            RecordApplication.showMessage(this,"No available recorded gestures for testing.");
+            RecordApplication.showMessage(this,getString(R.string.no_recorded_gestures));
         }
     }
 
@@ -153,10 +153,10 @@ public class MainActivity extends AppCompatActivity implements ConnectionStatusL
 
         final boolean isGestureEnabled = ApplicationPreferences.isGestureEnabled(this, gesturesNamesList.get(selectedItem));
 
-        CharSequence colors[] = new CharSequence[] {isGestureEnabled ? "Disable" : "Enable", "Delete"};
+        CharSequence colors[] = new CharSequence[] {isGestureEnabled ? getString(R.string.disable) : getString(R.string.enable), getString(R.string.delete)};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select Action");
+        builder.setTitle(R.string.select_action);
         builder.setItems(colors, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
