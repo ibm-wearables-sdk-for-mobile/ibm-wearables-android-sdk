@@ -1,4 +1,6 @@
 ![androidlogo-01](https://cloud.githubusercontent.com/assets/13234255/15288112/c57df8aa-1b70-11e6-83a3-fc44ab28ac52.png)
+##### Note: an iOS version is available is available at:
+https://github.com/ibm-wearables-sdk-for-mobile/ibm-wearables-swift-sdk
 
 # Overview
 This SDK facilitates the development of Android apps that utilize Wearable or Nearable Devices. It facilitates the development in just a fraction of the time and requires only minimal knowledge of the Wearable/Nearable domain.
