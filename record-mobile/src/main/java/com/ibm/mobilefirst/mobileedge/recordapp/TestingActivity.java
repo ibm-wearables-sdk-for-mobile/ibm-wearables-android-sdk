@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -153,11 +154,13 @@ public class TestingActivity extends AppCompatActivity {
 
         for (InputStream is : savedGesturesAsInputStream){
             classification.loadGesture(is);
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Log.v("TestingActivity","Loaded gesture == " + is.toString());
+
+//            try {
+//                is.close();              //No need to close it, the BufferedReader will close it by itself.
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 }
