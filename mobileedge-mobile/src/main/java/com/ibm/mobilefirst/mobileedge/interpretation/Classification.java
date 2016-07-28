@@ -42,7 +42,7 @@ import java.util.List;
 public class Classification extends BaseInterpretation{
 
     //the minimum needed data size for sending to classification
-    final int DATA_SIZE = 4;
+    final int DATA_SIZE = 3;
 
     List<JSONArray> accelerometerData = new LinkedList<>();
     List<JSONArray> gyroscopeData = new LinkedList<>();
