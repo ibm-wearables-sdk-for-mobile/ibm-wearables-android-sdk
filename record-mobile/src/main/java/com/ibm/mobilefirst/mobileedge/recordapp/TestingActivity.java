@@ -109,7 +109,7 @@ public class TestingActivity extends AppCompatActivity {
         controller.sensors.heartRate.registerListener(new SensorDataListener<HeartRateData>() {
             @Override
             public void onSensorDataChanged(HeartRateData data) {
-                System.out.println("HeartRate = " + data.hearRate);
+                System.out.println("HeartRate = " + data.heartRate);
             }
         });
 
