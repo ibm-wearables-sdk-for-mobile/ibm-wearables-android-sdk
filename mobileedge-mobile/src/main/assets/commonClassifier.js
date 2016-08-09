@@ -139,7 +139,7 @@ var slidingWindow = function(payload, gestures, maxSeqLength) {
 
 
 var classify = function(msg, gestures) {
-    var NUM_STATES = 8;
+    var NUM_STATES = 6;
     var matches = new Array(gestures.length); /* Default probability of each gesture */
     var matchesNorm = new Array(gestures.length); /* probability of each gesture */
     var gestPercent = new Array(gestures.length); /* recognition percentage of each gesture */
