@@ -222,6 +222,7 @@ public class MainActivity extends Activity implements ConnectionStatusListener {
             Toast.makeText(getApplicationContext(), "Connected to " + selectedDevice, Toast.LENGTH_SHORT).show();
 
             connectBLEButton.setEnabled(false);
+            devicesSpinner.setEnabled(false);
             sensorsSwitch.setEnabled(true);
             disconnectButton.setEnabled(true);
             disconnectButton.setOnClickListener(new View.OnClickListener(){
@@ -235,6 +236,7 @@ public class MainActivity extends Activity implements ConnectionStatusListener {
         } else if (status == ConnectionStatus.Disconnected) {
             Toast.makeText(getApplicationContext(), "Disconnected from " + selectedDevice, Toast.LENGTH_SHORT).show();
             connectBLEButton.setEnabled(true);
+            devicesSpinner.setEnabled(true);
             sensorsSwitch.setEnabled(false);
             sensorsSwitch.setChecked(false);
             disconnectButton.setEnabled(false);
