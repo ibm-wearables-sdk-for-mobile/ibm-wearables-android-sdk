@@ -28,6 +28,17 @@ public class AccelerometerData extends BaseSensorData {
     public float y;
     public float z;
 
+    public AccelerometerData(){
+        this(0.0f,0.0f,0.0f);
+    }
+
+    public AccelerometerData(float x, float y, float z){
+        super();
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
     @Override
     public JSONObject asJSON() {
         JSONObject json = super.asJSON();

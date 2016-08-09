@@ -46,4 +46,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.google.android.gms:play-services:8.4.0'
     compile(name:'AndroidJSCore-2.0-release', ext:'aar')
+    compile files('libs/microsoft-band-1.3.20307.2.jar')
 }

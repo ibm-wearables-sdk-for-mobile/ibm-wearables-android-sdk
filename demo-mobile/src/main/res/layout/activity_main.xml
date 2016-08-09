@@ -25,13 +25,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/connect_to_android_watch"
-        android:id="@+id/connectButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:prompt="@string/DevicesSpinner"
+            android:layout_marginBottom="40dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/connect_to_ble"
+            android:id="@+id/connectBleButton" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/disconnect"
+            android:id="@+id/disconnectButton" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,34 +64,23 @@
         android:layout_marginTop="35dp"
         android:textColor="@color/colorPrimary" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/accelerometer_data"
-        android:id="@+id/textView2"
-        android:layout_marginTop="74dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimaryDark" />
+        android:orientation="vertical"
+        android:id="@+id/dataLayout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/accelerometer_value_display"
-        android:id="@+id/accelerometerText"
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorAccent" />
+    </LinearLayout>
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/enable_accelerometer_sensor"
-        android:id="@+id/accelerometerSwitch"
-        android:layout_above="@+id/connectButton"
+        android:id="@+id/sensorsSwitch"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="40dp"
         android:checked="false"

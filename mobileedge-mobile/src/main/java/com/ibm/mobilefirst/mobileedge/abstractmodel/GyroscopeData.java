@@ -24,6 +24,17 @@ import org.json.JSONObject;
  */
 public class GyroscopeData extends BaseSensorData {
 
+    public GyroscopeData(){
+        this(0.0f,0.0f,0.0f);
+    }
+
+    public GyroscopeData(float x, float y, float z){
+        super();
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
     public float x;
     public float y;
     public float z;

@@ -23,10 +23,10 @@ import org.json.JSONObject;
  * Holds the heart rate data
  */
 public class HeartRateData extends BaseSensorData {
-    public float hearRate;
+    public float heartRate;
 
-    public HeartRateData(float hearRate) {
-        this.hearRate = hearRate;
+    public HeartRateData(float heartRate) {
+        this.heartRate = heartRate;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class HeartRateData extends BaseSensorData {
         JSONObject json = super.asJSON();
 
         try {
-            json.put("heartrate",hearRate);
+            json.put("heartrate",heartRate);
         } catch (JSONException e) {
             e.printStackTrace();
         }
